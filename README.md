@@ -15,9 +15,11 @@ UDPcast can be started from the included busybox boot image for OS installations
 `git clone https://github.com/TomKranenburg/udp-cast`
 2. Cd into the source directory:
 `cd udp-cast`
-3. Compile:
+3. Build the makefile
+`./configure`   
+4. Compile:
 `make`
-4. As root, install:
+5. As root, install (optional):
 `make install`
 
 This gives you a standalone `udp-sender` and `udp-receiver`, suitable for use on a filesserver.
