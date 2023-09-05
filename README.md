@@ -11,7 +11,7 @@ UDPcast can be started from the included busybox boot image for OS installations
 # Building
 ## Compiling udpcast itself (server version)
 
-1. Close the repo:
+1. Clone the repo:
 `git clone https://github.com/TomKranenburg/udp-cast`
 2. Cd into the source directory:
 `cd udp-cast`
