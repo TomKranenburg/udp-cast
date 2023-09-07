@@ -259,13 +259,13 @@ finished.
 
 `udp-sender -f zozo --min-receivers 5 --min-wait 20 --max-wait 80`
 
-•   If one receiver connects at 18h00.00, and 4 more within the next 5 minutes, start at
+* If one receiver connects at 18h00.00, and 4 more within the next 5 minutes, start at
 18h00.20. (5 receivers connected, but min-wait not yet passed)
 
-•   If one receiver connects at 18h00.00, and 3 more within the next 5 minutes, then a
+* If one receiver connects at 18h00.00, and 3 more within the next 5 minutes, then a
 last one at 18h00.25, start right after.
 
-•   If one receiver connects at 18h00.00, then 3 more within the next 15 minutes, then no
+* If one receiver connects at 18h00.00, then 3 more within the next 15 minutes, then no
 one, start at 18h01.20. (not enough receivers, but we start anyways after max-wait).
 
 ## Logging and statistics options
@@ -282,17 +282,15 @@ default, this is printed every half second.
 By default, udp-sender only prints the position in uncompressed file if the 2
 following conditions are met:
 
-•   Input is piped via a compressor ("-p " option).
+* Input is piped via a compressor ("-p " option).
 
-•   The primary input is seekable (file or device)
+* The primary input is seekable (file or device)
 
 With the "--print-uncompressed-position", options, you can change this behavior:
 
-•   If flag is 0, uncompressed position will never be printed, even if above
-   conditions are met
+* If flag is 0, uncompressed position will never be printed, even if above conditions are met
 
-•   If flag is 1, uncompressed position will always be printed, even if above
-   conditions are not met
+* If flag is 1, uncompressed position will always be printed, even if above conditions are not met
 
 `--log file`
 
@@ -312,11 +310,9 @@ average since start of transmission.
 The following tuning options are all about slice size. Udpcast groups its data in slices,
 which are a series of blocks (UDP packets). These groups are relevant for
 
-•   data retransmission: after each slice, the server asks the receivers whether they have
-received all blocks, and if needed retransmits what has been missing
+* data retransmission: after each slice, the server asks the receivers whether they have received all blocks, and if needed retransmits what has been missing
 
-•   forward error correction: each slice has its set of data blocks, and matching FEC
-blocks.
+* forward error correction: each slice has its set of data blocks, and matching FEC blocks.
 
 `--min-slice-size size`
 
@@ -372,21 +368,14 @@ first 8 packets were lost, they would be recoverable with 8/128, but not with 4/
 
 Considering these, change parameters as follows:
 
-•   If you observe long stretches of lost packets, increase interleave
+* If you observe long stretches of lost packets, increase interleave
 
-•   If you observe that transfer is slowed down by CPU saturation, decrease redundancy and
-stripesize proportionnally.
+* If you observe that transfer is slowed down by CPU saturation, decrease redundancy and stripesize proportionnally.
 
-•   If you observe big variations in packet loss rate, increase redundancy and stripesize
-proportionnally.
+* If you observe big variations in packet loss rate, increase redundancy and stripesize proportionnally.
 
-•   If you just observe high loss, but not necessarily clustered in any special way,
-increase redundancy or decrease stripesize
+* If you just observe high loss, but not necessarily clustered in any special way, increase redundancy or decrease stripesize
 
-•   Be aware that network equipment or the receiver may be dropping packets because of a
-bandwidth which is too high. Try limiting it using "max-bitrate"
+* Be aware that network equipment or the receiver may be dropping packets because of a bandwidth which is too high. Try limiting it using "max-bitrate"
 
-•   The receiver may also be dropping packets because it cannot write the data to disk
-fast enough. Use hdparm to optimize disk access on the receiver. Try playing with the
-settings in "/proc/sys/net/core/rmem_default" and "/proc/sys/net/core/rmem_max", i.e.
-setting them to a higher value.
+* The receiver may also be dropping packets because it cannot write the data to disk fast enough. Use hdparm to optimize disk access on the receiver. Try playing with the settings in "/proc/sys/net/core/rmem_default" and "/proc/sys/net/core/rmem_max", i.e. setting them to a higher value.
